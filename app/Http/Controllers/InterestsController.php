@@ -19,9 +19,19 @@ class InterestsController extends Controller
     {
         $data = new Interest;
         $data->interest = $request->interest;
-        $data->save();
+        if($data->save()){
+            return response()->json([
+                'message'   =>  'success',
+                'result'    =>  true
+            ]);
+        }else{
+            return response()->json([
+                'message'   =>  'success',
+                'result'    =>  false
+            ]);
+        }
 
-        return response()->json(['message'=>'success'], 200);
+        
     }
 
     public function update(Request $request){
